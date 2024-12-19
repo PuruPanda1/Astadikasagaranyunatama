@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latitude and Longitude Processor</title>
+</head>
+<body>
+    <h1>Latitude and Longitude Input</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if points_path %}
+        <h2>Results</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Sl No.</th>
+                    <th>Latitude</th>
+                    <th>Longitude</th>
+                </tr>
+            </thead>
+            <tbody>
+                   {% for item in points_path %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ item.latitude }}</td>
+                        <td>{{ item.longitude }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+</body>
+</html>
