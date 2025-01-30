@@ -34,10 +34,6 @@ def get_data(point: Point):
     responses = openmeteo.weather_api(url, params=params)
 
     response = responses[0]
-    # print(f"Coordinates {response.Latitude()}°N {response.Longitude()}°E")
-    # print(f"Elevation {response.Elevation()} m asl")
-    # print(f"Timezone {response.Timezone()} {response.TimezoneAbbreviation()}")
-    # print(f"Timezone difference to GMT+0 {response.UtcOffsetSeconds()} s")
 
     daily = response.Daily()
     daily_wave_height_max = daily.Variables(0).ValuesAsNumpy()
@@ -52,7 +48,6 @@ def get_data(point: Point):
 def get_location_parameters(point: Point):
     open_weather_data = get_open_weather_data(point)
     tide_data = get_world_tide_data(point)
-    print(f'Point {point.latitude} & {point.longitude} api data ---> {open_weather_data}')
     return {
         'wind_speed': open_weather_data['wind_speed'],
         'weather_description': open_weather_data['weather_description'],
@@ -103,11 +98,10 @@ def get_world_tide_data(point: Point):
     
     json_data = response.json()
     
-    print(json_data)
     # Extracting the tide heights
 
     if(json_data["status"] == 400):
-        return "No tide height data available"
+        return 0
     heights = [entry["height"] for entry in json_data["heights"]]
     
     avg_height = average_height(heights)
