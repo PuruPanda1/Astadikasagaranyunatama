@@ -97,7 +97,7 @@ def find_asta_directions(point: Point):
 
 def set_parameters(points, endPoint: Point):
     for point in points:
-        data = find_conditions(point, endPoint)
+        data = find_point_s_oceanic_conditions(point, endPoint)
         point.location_parameters.update({
             'wind_speed': data['wind_speed'],
             'weather_description': data['weather_description'],
@@ -108,7 +108,7 @@ def set_parameters(points, endPoint: Point):
         })
 
 
-def find_conditions(point: Point, endPoint: Point):
+def find_point_s_oceanic_conditions(point: Point, endPoint: Point):
     distance = haversine(point, endPoint)
     print(f"Distance is {distance}")
     api_data = get_location_parameters(point=point)
