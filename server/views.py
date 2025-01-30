@@ -5,6 +5,7 @@ from .forms import LatLongForm
 from server.utils.tools import haversine
 import asyncio
 
+
 def lat_long_view(request):
     points_path = []
 
@@ -16,10 +17,12 @@ def lat_long_view(request):
 
             print("Working")
             # points_path = find_min_path(Point(latitude=latitude, longitude=longitude))
-            points_path = find_min_path(
-                Point(latitude=5.431434478534287, longitude=77.91857596159046), Point(latitude=5.446320479718707, longitude=77.97466368412123))
+            start_point = Point(latitude=5.926, longitude=80.108)
+            end_point = Point(latitude=6.10691182699255,
+                              longitude=80.10855507734915)
+            points_path = find_min_path(start_point, end_point)
     else:
-        form = LatLongForm() 
+        form = LatLongForm()
 
     print(len(points_path))
     return render(request, 'server/lat_long_input.html', {'form': form, 'points_path': points_path})
@@ -31,9 +34,10 @@ def find_min_path(startPoint: Point, endPoint: Point):
 
     points_path = []
 
-    while (haversine(currentPoint, endPoint) > 1.0):
+    while (haversine(currentPoint, endPoint) > 2.0):
 
-        print(f"Current Point: {currentPoint.latitude} & {currentPoint.longitude}")
+        print(f"Current Point: {currentPoint.latitude} & {
+              currentPoint.longitude}")
 
         points = find_asta_directions(currentPoint)
 
@@ -48,6 +52,8 @@ def find_min_path(startPoint: Point, endPoint: Point):
     return points_path
 
 # * Implemented function to find 8 directions for the given Point
+
+
 def find_asta_directions(point: Point):
     lat = point.latitude
     long = point.longitude
@@ -107,7 +113,8 @@ def find_conditions(point: Point, endPoint: Point):
     print(f"Distance is {distance}")
     api_data = get_location_parameters(point=point)
     api_data['distance'] = distance
-    print(f"Point {point.latitude} & {point.longitude} api data ---> {api_data}")
+    print(f"Point {point.latitude} & {
+          point.longitude} api data ---> {api_data}")
     return api_data
 
 
@@ -121,7 +128,7 @@ def choose_min_point(points):
         'weather_description': 0.0,
         'distance': 0.4
     }
-    
+
     good_point = find_good_point(points, weights)
 
     return good_point
@@ -139,13 +146,14 @@ def find_good_point(points, weights):
     normalized_points = {}
     for prop in weights.keys():
         prop_values = [point.location_parameters[prop] for point in points]
-        
+
         if prop == "distance":
             max_val, min_val = max(prop_values), min(prop_values)
-            normalized_values = [(max_val - val) / (max_val - min_val) if max_val != min_val else 0 for val in prop_values]
+            normalized_values = [(max_val - val) / (max_val - min_val)
+                                 if max_val != min_val else 0 for val in prop_values]
         else:
-            normalized_values = normalize(prop_values) 
-        
+            normalized_values = normalize(prop_values)
+
         for i, norm_val in enumerate(normalized_values):
             normalized_points.setdefault(i, {})[prop] = norm_val
 

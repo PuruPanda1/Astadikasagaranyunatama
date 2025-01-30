@@ -95,25 +95,24 @@ def get_open_weather_data(point: Point):
 def get_world_tide_data(point: Point):
     lat = point.latitude
     long = point.longitude
-    params = {
-        "date": "2024-12-09",
-        "lat": lat,
-        "lon": long,
-        "key": settings.WORLD_TIDE_API_KEY
-    }
+   
 
-    # url = f"{settings.WORLD_TIDE_BASE_URL}?date=2024-12-09&lat={lat}&lon={long}&key={settings.WORLD_TIDE_API_KEY}"
+    url = f"{settings.WORLD_TIDE_BASE_URL}?date=2024-12-09&lat={lat}&lon={long}&key={settings.WORLD_TIDE_API_KEY}"
 
-    # response = requests.get(url)
+    response = requests.get(url)
     
-    # json_data = response.json()
+    json_data = response.json()
     
-    # # Extracting the tide heights
-    # heights = [entry["height"] for entry in json_data["heights"]]
+    print(json_data)
+    # Extracting the tide heights
+
+    if(json_data["status"] == 400):
+        return "No tide height data available"
+    heights = [entry["height"] for entry in json_data["heights"]]
     
-    # avg_height = average_height(heights)
+    avg_height = average_height(heights)
     
-    return 0.297
+    return avg_height
 
 # * TESTING THE FUNCTION
 # get_open_weather_data(Point(latitude=7.367, longitude=45.133))
