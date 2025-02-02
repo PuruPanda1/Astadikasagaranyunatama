@@ -383,8 +383,7 @@ def find_point_s_oceanic_conditions(point: Point, endPoint: Point):
     distance = haversine(point, endPoint)
     api_data = get_location_parameters(point=point)
     api_data['distance'] = distance
-    print(f"Point {point.latitude} & {
-          point.longitude} api data ---> {api_data}")
+    print(f"Point {point.latitude} & {point.longitude} api data ---> {api_data}")
     print(f"Distance is {distance}")
     return api_data
 
@@ -392,10 +391,10 @@ def find_point_s_oceanic_conditions(point: Point, endPoint: Point):
 def choose_min_point(points):
 
     weights = {
-        'wind_speed': 0.3,
+        'wind_speed': 0.1,
         'visibility': 0.2,
-        'sea_level': 0.1,
-        'tide_height': 0.0,
+        'sea_level': 0.0,
+        'tide_height': 0.3,
         'weather_description': 0.0,
         'distance': 0.4
     }

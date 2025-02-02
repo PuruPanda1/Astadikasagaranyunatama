@@ -1,49 +1,8 @@
-import openmeteo_requests
-import requests_cache
-from retry_requests import retry
 from django.conf import settings
 from server.utils.point import Point
 import requests
 from server.utils.tools import average_height
-import asyncio
-
-cache_session = requests_cache.CachedSession('.cache', expire_after = 3600)
-retry_session = retry(cache_session, retries = 5, backoff_factor = 0.2)
-openmeteo = openmeteo_requests.Client(session = retry_session)
-
-url = settings.BASE_URL
-parameter = ["wave_height_max", "wave_period_max", "wind_wave_height_max", "wind_wave_period_max", "swell_wave_height_max", "swell_wave_period_max"]
-
-# TODO World Tide API parameters
-# &date=2024-12-09&lat=33.768321&lon=-118.195617&key=
-
-# TODO Open Weather API parameters  
-# ?lat=33.44&lon=-94.04&exclude=hourly,daily&appid={API key}
-
-def get_data(point: Point):
-    lat = point.latitude
-    long = point.longitude
-    params = {
-        "latitude": lat,
-        "longitude": long,
-        "daily": parameter,
-        "forecast_days": 1,
-        "timezone": settings.TIME_ZONE
-    }
-
-    responses = openmeteo.weather_api(url, params=params)
-
-    response = responses[0]
-
-    daily = response.Daily()
-    daily_wave_height_max = daily.Variables(0).ValuesAsNumpy()
-    daily_wave_period_max = daily.Variables(1).ValuesAsNumpy()
-    daily_wind_wave_height_max = daily.Variables(2).ValuesAsNumpy()
-    daily_wind_wave_period_max = daily.Variables(3).ValuesAsNumpy()
-    daily_swell_wave_height_max = daily.Variables(4).ValuesAsNumpy()
-    daily_swell_wave_period_max = daily.Variables(5).ValuesAsNumpy()
-
-    return {'height': daily_wave_height_max, 'period': daily_wave_period_max}
+from datetime import datetime
 
 def get_location_parameters(point: Point):
     open_weather_data = get_open_weather_data(point)
@@ -92,7 +51,7 @@ def get_world_tide_data(point: Point):
     long = point.longitude
    
 
-    url = f"{settings.WORLD_TIDE_BASE_URL}?date=2024-12-09&lat={lat}&lon={long}&key={settings.WORLD_TIDE_API_KEY}"
+    url = f"{settings.WORLD_TIDE_BASE_URL}&lat={lat}&lon={long}&date={datetime.now().strftime('%Y-%m-%d')}&key={settings.WORLD_TIDE_API_KEY}"
 
     response = requests.get(url)
     
