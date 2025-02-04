@@ -8,8 +8,15 @@ from rest_framework.response import Response
 import json
 
 
+use_tide_api = True
+
 @api_view(["POST"])
 def get_points_x(request):
+    data = json.loads(request.body)
+    # points = data.get('points', [])
+    weights = data.get('weights', {})
+    print(f"Weights are {weights}")
+    print(f"Weights are {weights['windWeight']}")
     path = [
         {
             "latitude": 5.926,
@@ -261,11 +268,20 @@ def get_points(request):
         try:
             data = json.loads(request.body)
             points = data.get('points', [])
+            weights = data.get('weights', {})
+            
+            print(f"Weights are {weights}")
+            print(f"Points are {points}")
+
+            global use_tide_api
 
             if len(points) != 2:
                 return Response({"error": "Exactly 2 points are required"}, status=400)
 
             startPoint, endPoint = points
+
+            print(f"Start point is {startPoint}")
+            print(f"End point is {endPoint}")
 
             # convert to Point objects
             startPoint = Point(
@@ -273,7 +289,10 @@ def get_points(request):
             endPoint = Point(
                 latitude=float(endPoint['latitude']), longitude=float(endPoint['longitude']))
 
-            path = find_min_path(startPoint, endPoint)
+            if haversine(startPoint, endPoint) > 4.0:
+                use_tide_api = False
+
+            path = find_min_path(startPoint, endPoint, weights)
 
             return Response({"path": path})
         except Exception as e:
@@ -302,7 +321,7 @@ def lat_long_view(request):
     return render(request, 'server/lat_long_input.html', {'form': form, 'points_path': points_path})
 
 
-def find_min_path(startPoint: Point, endPoint: Point):
+def find_min_path(startPoint: Point, endPoint: Point, weights: dict):
 
     current_point = startPoint
 
@@ -314,7 +333,7 @@ def find_min_path(startPoint: Point, endPoint: Point):
 
         set_parameters(points, endPoint)
 
-        min_point = choose_min_point(points)
+        min_point = choose_min_point(points, weights)
 
         points_path.append(current_point.to_dict())
 
@@ -380,23 +399,30 @@ def set_parameters(points, endPoint: Point):
 
 
 def find_point_s_oceanic_conditions(point: Point, endPoint: Point):
+    global use_tide_api
     distance = haversine(point, endPoint)
-    api_data = get_location_parameters(point=point)
+    api_data = get_location_parameters(point=point, use_tide_api=use_tide_api)
     api_data['distance'] = distance
     print(f"Point {point.latitude} & {point.longitude} api data ---> {api_data}")
     print(f"Distance is {distance}")
     return api_data
 
 
-def choose_min_point(points):
+def choose_min_point(points, weights: dict):
+    global use_tide_api
+
+    if use_tide_api:
+        tide_weight = float(weights['tideWeight'])
+    else:
+        tide_weight = 0
 
     weights = {
-        'wind_speed': 0.1,
-        'visibility': 0.2,
-        'sea_level': 0.0,
-        'tide_height': 0.3,
+        'wind_speed': float(weights['windWeight']),
+        'visibility': float(weights['visibilityWeight']),
+        'sea_level': float(weights['seaLevelWeight']),
+        'tide_height': tide_weight,
         'weather_description': 0.0,
-        'distance': 0.4
+        'distance': float(weights['distanceWeight'])
     }
 
     good_point = find_good_point(points, weights)

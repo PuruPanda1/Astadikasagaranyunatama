@@ -4,9 +4,12 @@ import requests
 from server.utils.tools import average_height
 from datetime import datetime
 
-def get_location_parameters(point: Point):
+def get_location_parameters(point: Point, use_tide_api: bool):
     open_weather_data = get_open_weather_data(point)
-    tide_data = get_world_tide_data(point)
+    if use_tide_api:
+        tide_data = get_world_tide_data(point)
+    else:
+        tide_data = 0
     return {
         'wind_speed': open_weather_data['wind_speed'],
         'weather_description': open_weather_data['weather_description'],
