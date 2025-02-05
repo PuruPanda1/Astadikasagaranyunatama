@@ -18,247 +18,390 @@ def get_points_x(request):
     print(f"Weights are {weights}")
     print(f"Weights are {weights['windWeight']}")
     path = [
-        {
-            "latitude": 5.926,
-            "longitude": 80.108,
-            "direction": "",
-            "location_parameters": {}
-        },
-        {
-            "latitude": 5.934993,
-            "longitude": 80.108,
-            "direction": "North",
-            "location_parameters": {
-                "wind_speed": 5.09,
-                "weather_description": "scattered clouds",
-                "visibility": 10000,
-                "sea_level": 1008,
-                "tide_height": 0,
-                "distance": 19.116599900745438
-            }
-        },
-        {
-            "latitude": 5.943986000000001,
-            "longitude": 80.108,
-            "direction": "North",
-            "location_parameters": {
-                "wind_speed": 5.09,
-                "weather_description": "scattered clouds",
-                "visibility": 10000,
-                "sea_level": 1008,
-                "tide_height": 0,
-                "distance": 18.11662936303665
-            }
-        },
-        {
-            "latitude": 5.952979000000001,
-            "longitude": 80.108,
-            "direction": "North",
-            "location_parameters": {
-                "wind_speed": 5.09,
-                "weather_description": "scattered clouds",
-                "visibility": 10000,
-                "sea_level": 1008,
-                "tide_height": 0,
-                "distance": 17.11665946066737
-            }
-        },
-        {
-            "latitude": 5.961972000000001,
-            "longitude": 80.108,
-            "direction": "North",
-            "location_parameters": {
-                "wind_speed": 4.77,
-                "weather_description": "scattered clouds",
-                "visibility": 10000,
-                "sea_level": 1008,
-                "tide_height": 0,
-                "distance": 16.116690311897678
-            }
-        },
-        {
-            "latitude": 5.970965000000001,
-            "longitude": 80.108,
-            "direction": "North",
-            "location_parameters": {
-                "wind_speed": 4.77,
-                "weather_description": "scattered clouds",
-                "visibility": 10000,
-                "sea_level": 1008,
-                "tide_height": 0,
-                "distance": 15.116722066279113
-            }
-        },
-        {
-            "latitude": 5.979958000000002,
-            "longitude": 80.108,
-            "direction": "North",
-            "location_parameters": {
-                "wind_speed": 4.77,
-                "weather_description": "scattered clouds",
-                "visibility": 10000,
-                "sea_level": 1008,
-                "tide_height": 0,
-                "distance": 14.116754915737326
-            }
-        },
-        {
-            "latitude": 5.988951000000002,
-            "longitude": 80.108,
-            "direction": "North",
-            "location_parameters": {
-                "wind_speed": 4.77,
-                "weather_description": "scattered clouds",
-                "visibility": 10000,
-                "sea_level": 1008,
-                "tide_height": 0,
-                "distance": 13.116789110724035
-            }
-        },
-        {
-            "latitude": 5.997944000000002,
-            "longitude": 80.108,
-            "direction": "North",
-            "location_parameters": {
-                "wind_speed": 4.42,
-                "weather_description": "scattered clouds",
-                "visibility": 10000,
-                "sea_level": 1008,
-                "tide_height": 0,
-                "distance": 12.116824984366746
-            }
-        },
-        {
-            "latitude": 6.006937000000002,
-            "longitude": 80.108,
-            "direction": "North",
-            "location_parameters": {
-                "wind_speed": 4.42,
-                "weather_description": "scattered clouds",
-                "visibility": 10000,
-                "sea_level": 1008,
-                "tide_height": 0,
-                "distance": 11.116862989651814
-            }
-        },
-        {
-            "latitude": 6.015930000000003,
-            "longitude": 80.108,
-            "direction": "North",
-            "location_parameters": {
-                "wind_speed": 4.42,
-                "weather_description": "scattered clouds",
-                "visibility": 10000,
-                "sea_level": 1008,
-                "tide_height": 0,
-                "distance": 10.116903758658433
-            }
-        },
-        {
-            "latitude": 6.024923000000003,
-            "longitude": 80.108,
-            "direction": "North",
-            "location_parameters": {
-                "wind_speed": 4.42,
-                "weather_description": "scattered clouds",
-                "visibility": 10000,
-                "sea_level": 1008,
-                "tide_height": 0,
-                "distance": 9.116948200772814
-            }
-        },
-        {
-            "latitude": 6.033916000000003,
-            "longitude": 80.108,
-            "direction": "North",
-            "location_parameters": {
-                "wind_speed": 4.02,
-                "weather_description": "scattered clouds",
-                "visibility": 10000,
-                "sea_level": 1008,
-                "tide_height": 0,
-                "distance": 8.11699767349621
-            }
-        },
-        {
-            "latitude": 6.042909000000003,
-            "longitude": 80.108,
-            "direction": "North",
-            "location_parameters": {
-                "wind_speed": 4.02,
-                "weather_description": "scattered clouds",
-                "visibility": 10000,
-                "sea_level": 1008,
-                "tide_height": 0,
-                "distance": 7.117054297239958
-            }
-        },
-        {
-            "latitude": 6.051902000000004,
-            "longitude": 80.108,
-            "direction": "North",
-            "location_parameters": {
-                "wind_speed": 4.02,
-                "weather_description": "scattered clouds",
-                "visibility": 10000,
-                "sea_level": 1008,
-                "tide_height": 0,
-                "distance": 6.117121578858095
-            }
-        },
-        {
-            "latitude": 6.060895000000004,
-            "longitude": 80.108,
-            "direction": "North",
-            "location_parameters": {
-                "wind_speed": 3.59,
-                "weather_description": "scattered clouds",
-                "visibility": 10000,
-                "sea_level": 1008,
-                "tide_height": 0,
-                "distance": 5.117205766192291
-            }
-        },
-        {
-            "latitude": 6.069888000000004,
-            "longitude": 80.108,
-            "direction": "North",
-            "location_parameters": {
-                "wind_speed": 3.59,
-                "weather_description": "scattered clouds",
-                "visibility": 10000,
-                "sea_level": 1008,
-                "tide_height": 0,
-                "distance": 4.117319176226517
-            }
-        },
-        {
-            "latitude": 6.078881000000004,
-            "longitude": 80.108,
-            "direction": "North",
-            "location_parameters": {
-                "wind_speed": 3.59,
-                "weather_description": "scattered clouds",
-                "visibility": 10000,
-                "sea_level": 1008,
-                "tide_height": 0,
-                "distance": 3.1174899272723025
-            }
-        },
-        {
-            "latitude": 6.087874000000005,
-            "longitude": 80.108,
-            "direction": "North",
-            "location_parameters": {
-                "wind_speed": 3.59,
-                "weather_description": "scattered clouds",
-                "visibility": 10000,
-                "sea_level": 1008,
-                "tide_height": 0,
-                "distance": 2.11779923427992
-            }
+    {
+        "latitude": 9.1313564969672,
+        "longitude": 79.72427765524787,
+        "direction": "",
+        "location_parameters": {}
+    },
+    {
+        "latitude": 9.1377264969672,
+        "longitude": 79.73064765524788,
+        "direction": "North East",
+        "location_parameters": {
+            "wind_speed": 7.04,
+            "weather_description": "broken clouds",
+            "visibility": 10000,
+            "sea_level": 1009,
+            "tide_height": 0,
+            "distance": 27.966776209778875
         }
-    ]
+    },
+    {
+        "latitude": 9.1467194969672,
+        "longitude": 79.73064765524788,
+        "direction": "North",
+        "location_parameters": {
+            "wind_speed": 7.04,
+            "weather_description": "broken clouds",
+            "visibility": 10000,
+            "sea_level": 1009,
+            "tide_height": 0,
+            "distance": 27.400364112955273
+        }
+    },
+    {
+        "latitude": 9.155712496967201,
+        "longitude": 79.73064765524788,
+        "direction": "North",
+        "location_parameters": {
+            "wind_speed": 6.84,
+            "weather_description": "broken clouds",
+            "visibility": 10000,
+            "sea_level": 1009,
+            "tide_height": 0,
+            "distance": 26.859248515807124
+        }
+    },
+    {
+        "latitude": 9.162082496967201,
+        "longitude": 79.73701765524788,
+        "direction": "North East",
+        "location_parameters": {
+            "wind_speed": 6.98,
+            "weather_description": "broken clouds",
+            "visibility": 10000,
+            "sea_level": 1009,
+            "tide_height": 0,
+            "distance": 25.892453705083597
+        }
+    },
+    {
+        "latitude": 9.168452496967202,
+        "longitude": 79.74338765524789,
+        "direction": "North East",
+        "location_parameters": {
+            "wind_speed": 6.98,
+            "weather_description": "broken clouds",
+            "visibility": 10000,
+            "sea_level": 1009,
+            "tide_height": 0,
+            "distance": 24.92792096246336
+        }
+    },
+    {
+        "latitude": 9.174822496967202,
+        "longitude": 79.74975765524789,
+        "direction": "North East",
+        "location_parameters": {
+            "wind_speed": 6.98,
+            "weather_description": "broken clouds",
+            "visibility": 10000,
+            "sea_level": 1009,
+            "tide_height": 0,
+            "distance": 23.965922320774943
+        }
+    },
+    {
+        "latitude": 9.181192496967203,
+        "longitude": 79.7561276552479,
+        "direction": "North East",
+        "location_parameters": {
+            "wind_speed": 6.98,
+            "weather_description": "broken clouds",
+            "visibility": 10000,
+            "sea_level": 1009,
+            "tide_height": 0,
+            "distance": 23.00677452999118
+        }
+    },
+    {
+        "latitude": 9.187562496967203,
+        "longitude": 79.7624976552479,
+        "direction": "North East",
+        "location_parameters": {
+            "wind_speed": 6.82,
+            "weather_description": "broken clouds",
+            "visibility": 10000,
+            "sea_level": 1009,
+            "tide_height": 0,
+            "distance": 22.05084842149319
+        }
+    },
+    {
+        "latitude": 9.193932496967204,
+        "longitude": 79.7688676552479,
+        "direction": "North East",
+        "location_parameters": {
+            "wind_speed": 6.82,
+            "weather_description": "broken clouds",
+            "visibility": 10000,
+            "sea_level": 1009,
+            "tide_height": 0,
+            "distance": 21.09858066244781
+        }
+    },
+    {
+        "latitude": 9.200302496967204,
+        "longitude": 79.7752376552479,
+        "direction": "North East",
+        "location_parameters": {
+            "wind_speed": 7.02,
+            "weather_description": "broken clouds",
+            "visibility": 10000,
+            "sea_level": 1009,
+            "tide_height": 0,
+            "distance": 20.15048861925268
+        }
+    },
+    {
+        "latitude": 9.206672496967204,
+        "longitude": 79.78160765524791,
+        "direction": "North East",
+        "location_parameters": {
+            "wind_speed": 7.02,
+            "weather_description": "broken clouds",
+            "visibility": 10000,
+            "sea_level": 1009,
+            "tide_height": 0,
+            "distance": 19.207189296402575
+        }
+    },
+    {
+        "latitude": 9.213042496967205,
+        "longitude": 79.78797765524791,
+        "direction": "North East",
+        "location_parameters": {
+            "wind_speed": 7.02,
+            "weather_description": "broken clouds",
+            "visibility": 10000,
+            "sea_level": 1009,
+            "tide_height": 0,
+            "distance": 18.269423658850425
+        }
+    },
+    {
+        "latitude": 9.219412496967205,
+        "longitude": 79.79434765524792,
+        "direction": "North East",
+        "location_parameters": {
+            "wind_speed": 6.89,
+            "weather_description": "broken clouds",
+            "visibility": 10000,
+            "sea_level": 1009,
+            "tide_height": 0,
+            "distance": 17.338088120069763
+        }
+    },
+    {
+        "latitude": 9.225782496967206,
+        "longitude": 79.80071765524792,
+        "direction": "North East",
+        "location_parameters": {
+            "wind_speed": 6.89,
+            "weather_description": "broken clouds",
+            "visibility": 10000,
+            "sea_level": 1009,
+            "tide_height": 0,
+            "distance": 16.414275637564927
+        }
+    },
+    {
+        "latitude": 9.232152496967206,
+        "longitude": 79.80708765524793,
+        "direction": "North East",
+        "location_parameters": {
+            "wind_speed": 7.14,
+            "weather_description": "broken clouds",
+            "visibility": 10000,
+            "sea_level": 1009,
+            "tide_height": 0,
+            "distance": 15.499329774471052
+        }
+    },
+    {
+        "latitude": 9.232152496967206,
+        "longitude": 79.81608065524793,
+        "direction": "East",
+        "location_parameters": {
+            "wind_speed": 7.14,
+            "weather_description": "broken clouds",
+            "visibility": 10000,
+            "sea_level": 1009,
+            "tide_height": 0,
+            "distance": 14.585375306727876
+        }
+    },
+    {
+        "latitude": 9.238522496967207,
+        "longitude": 79.82245065524793,
+        "direction": "North East",
+        "location_parameters": {
+            "wind_speed": 7.14,
+            "weather_description": "broken clouds",
+            "visibility": 10000,
+            "sea_level": 1009,
+            "tide_height": 0,
+            "distance": 13.670988718416073
+        }
+    },
+    {
+        "latitude": 9.238522496967207,
+        "longitude": 79.83144365524794,
+        "direction": "East",
+        "location_parameters": {
+            "wind_speed": 7.14,
+            "weather_description": "broken clouds",
+            "visibility": 10000,
+            "sea_level": 1009,
+            "tide_height": 0,
+            "distance": 12.75650388160936
+        }
+    },
+    {
+        "latitude": 9.244892496967207,
+        "longitude": 79.83781365524794,
+        "direction": "North East",
+        "location_parameters": {
+            "wind_speed": 7.41,
+            "weather_description": "broken clouds",
+            "visibility": 10000,
+            "sea_level": 1009,
+            "tide_height": 0,
+            "distance": 11.842843599277701
+        }
+    },
+    {
+        "latitude": 9.251262496967207,
+        "longitude": 79.84418365524795,
+        "direction": "North East",
+        "location_parameters": {
+            "wind_speed": 7.27,
+            "weather_description": "broken clouds",
+            "visibility": 10000,
+            "sea_level": 1009,
+            "tide_height": 0,
+            "distance": 10.943439771268054
+        }
+    },
+    {
+        "latitude": 9.257632496967208,
+        "longitude": 79.85055365524795,
+        "direction": "North East",
+        "location_parameters": {
+            "wind_speed": 7.27,
+            "weather_description": "broken clouds",
+            "visibility": 10000,
+            "sea_level": 1009,
+            "tide_height": 0,
+            "distance": 10.062113448004746
+        }
+    },
+    {
+        "latitude": 9.257632496967208,
+        "longitude": 79.85954665524795,
+        "direction": "East",
+        "location_parameters": {
+            "wind_speed": 7.27,
+            "weather_description": "broken clouds",
+            "visibility": 10000,
+            "sea_level": 1009,
+            "tide_height": 0,
+            "distance": 9.119615356483445
+        }
+    },
+    {
+        "latitude": 9.257632496967208,
+        "longitude": 79.86853965524796,
+        "direction": "East",
+        "location_parameters": {
+            "wind_speed": 7.27,
+            "weather_description": "broken clouds",
+            "visibility": 10000,
+            "sea_level": 1009,
+            "tide_height": 0,
+            "distance": 8.187590924630673
+        }
+    },
+    {
+        "latitude": 9.264002496967208,
+        "longitude": 79.87490965524796,
+        "direction": "North East",
+        "location_parameters": {
+            "wind_speed": 7.27,
+            "weather_description": "broken clouds",
+            "visibility": 10000,
+            "sea_level": 1009,
+            "tide_height": 0,
+            "distance": 7.298314412385041
+        }
+    },
+    {
+        "latitude": 9.264002496967208,
+        "longitude": 79.88390265524797,
+        "direction": "East",
+        "location_parameters": {
+            "wind_speed": 7.54,
+            "weather_description": "broken clouds",
+            "visibility": 10000,
+            "sea_level": 1009,
+            "tide_height": 0,
+            "distance": 6.361031132439267
+        }
+    },
+    {
+        "latitude": 9.264002496967208,
+        "longitude": 79.89289565524797,
+        "direction": "East",
+        "location_parameters": {
+            "wind_speed": 7.54,
+            "weather_description": "broken clouds",
+            "visibility": 10000,
+            "sea_level": 1009,
+            "tide_height": 0,
+            "distance": 5.441324218124918
+        }
+    },
+    {
+        "latitude": 9.270372496967209,
+        "longitude": 79.89926565524797,
+        "direction": "North East",
+        "location_parameters": {
+            "wind_speed": 7.54,
+            "weather_description": "broken clouds",
+            "visibility": 10000,
+            "sea_level": 1009,
+            "tide_height": 0,
+            "distance": 4.536282444054203
+        }
+    },
+    {
+        "latitude": 9.270372496967209,
+        "longitude": 79.90825865524798,
+        "direction": "East",
+        "location_parameters": {
+            "wind_speed": 7.76,
+            "weather_description": "broken clouds",
+            "visibility": 10000,
+            "sea_level": 1009,
+            "tide_height": 0,
+            "distance": 3.612624739048601
+        }
+    },
+    {
+        "latitude": 9.27674249696721,
+        "longitude": 79.91462865524798,
+        "direction": "North East",
+        "location_parameters": {
+            "wind_speed": 7.76,
+            "weather_description": "broken clouds",
+            "visibility": 10000,
+            "sea_level": 1009,
+            "tide_height": 0,
+            "distance": 2.716939470362486
+        }
+    }
+]
     return Response({"path": path})
 
 
