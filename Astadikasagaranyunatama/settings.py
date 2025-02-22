@@ -133,13 +133,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # GLOBAL VALUES
 
 # API BASE URLS
-BASE_URL = "https://marine-api.open-meteo.com/v1/marine"
+BASE_URL = ""
 
-OPEN_WEATHER_API_KEY = "57896ba673a1181a424c0b87c5824b38"
-OPEN_WEATHER_BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
+OPEN_WEATHER_API_KEY = ""
+OPEN_WEATHER_BASE_URL = ""
 
-WORLD_TIDE_BASE_URL = "https://www.worldtides.info/api/v3?heights"
-WORLD_TIDE_API_KEY = "10e1ca06-d438-4c77-a9fb-82f53a7b211a"
+WORLD_TIDE_BASE_URL = ""
+WORLD_TIDE_API_KEY = ""
 
 # Units
 TEMPERATURE_UNIT = "Kelvin"
